@@ -6,11 +6,15 @@
     </div>
 
     <div class="flex flex-wrap gap-6 mt-[65.12px] justify-center md:justify-start">
-      <card-filter title="Usage Intensity" type="steps" :labels="['Low', '', 'Medium', '', 'High']" />
+      <card-filter title="Usage Intensity" type="steps" :labels="['Low', '', 'Medium', '', 'High']" v-model:currentStepIndex="usageIntensityStep" />
 
-      <card-filter title="Transport Distance" type="steps" :labels="['Short', '', 'Medium', '', 'Long']" />
+      <card-filter title="Transport Distance" type="steps" :labels="['Short', '', 'Medium', '', 'Long']" v-model:currentStepIndex="transportDistanceStep"  />
 
       <card-filter title="Load Capacity" type="slider" />
+    </div>
+
+    <div class="my-[34.24px]">
+      <display-filters />
     </div>
 
     <div class="mt-[37.68px]">
@@ -20,5 +24,6 @@
 </template>
 
 <script lang="ts" setup>
-
+const usageIntensityStep = ref(null);
+const transportDistanceStep = ref(null);
 </script>

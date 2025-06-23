@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex items-center justify-center pb-6">
+    <div class="flex items-center justify-center pb-[192.38px]">
       <div class="container mx-auto">
         <div
           :class="['grid', cards.length === 1 ? 'place-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4', 'gap-[30px]']">
