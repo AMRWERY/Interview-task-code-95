@@ -196,6 +196,6 @@ onUnmounted(() => {
     cursor: grab;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 50;
+    z-index: 30;
 }
 </style>

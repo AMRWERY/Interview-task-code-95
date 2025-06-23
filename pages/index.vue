@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="mt-[188.84px] text-center">
-      <p class="font-700 text-[32px] uppercase text-[#282830]">Ranges</p>
-      <div class="w-[50px] h-[1px] bg-[#CE190A] mt-3 mx-auto"></div>
+    <div class="mt-[70px] sm:mt-[100px] md:mt-[188.84px] text-center">
+      <p class="font-700 text-[24px] md:text-[32px] uppercase text-[#282830]">Ranges</p>
+      <div class="w-[30px] md:w-[50px] h-[1px] bg-[#CE190A] mt-3 mx-auto"></div>
     </div>
 
-    <div class="flex flex-wrap gap-6 mt-[65.12px] justify-center md:justify-start">
+    <div
+      class="flex flex-col items-center md:flex-row md:flex-wrap md:items-start gap-6 mt-[30px] md:mt-[65.12px] justify-start">
       <!-- Usage Intensity -->
       <card-filter title="Usage Intensity" type="steps" :labels="['Low', '', 'Medium', '', 'High']"
         v-model:currentStepIndex="usageIntensityStep" />
@@ -18,11 +19,13 @@
       <card-filter title="Load Capacity" type="slider" v-model:minValue="minKg" v-model:maxValue="maxKg" />
     </div>
 
-    <div class="my-[34.24px]">
+    <!-- Display Filters -->
+    <div class="my-[20px] md:my-[34.24px]">
       <display-filters />
     </div>
 
-    <div class="mt-[37.68px]">
+    <!-- Product Cards -->
+    <div class="mt-[20px] md:mt-[37.68px]">
       <product-cards />
     </div>
   </div>

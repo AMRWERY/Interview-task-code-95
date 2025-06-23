@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex items-center justify-center pb-[192.38px]">
-      <div class="container mx-auto">
+      <div class="mx-auto">
         <div
           :class="['grid', cards.length === 1 ? 'place-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4', 'gap-[30px]']">
           <template v-if="productsStore.isLoading">
@@ -9,8 +9,7 @@
           </template>
 
           <template v-else>
-            <TransitionGroup name="fade" mode="out-in"
-              :class="['grid', cards.length === 1 ? 'place-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4', 'gap-[30px]']">
+            <TransitionGroup name="fade">
               <div v-for="card in cards" :key="card.id"
                 class="bg-white rounded-xl custom-shadow py-5 text-center w-[326px] min-h-[390px] gap-2.5">
                 <img :src="card.featured_image" alt="product" class="w-[195.93px] h-[195.93px] object-contain mx-auto">

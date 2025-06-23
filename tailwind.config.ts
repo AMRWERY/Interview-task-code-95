@@ -11,16 +11,6 @@ export default {
   ],
   theme: {
     extend: {
-      // screens: {
-      //   xs: "414px",
-      //   // => @media (min-width: 414px) { ... }
-      //   sm: "576px",
-      //   // => @media (min-width: 576px) { ... }
-      //   md: "960px",
-      //   // => @media (min-width: 960px) { ... }
-      //   lg: "1440px",
-      //   // => @media (min-width: 1440px) { ... }
-      // },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
       },
