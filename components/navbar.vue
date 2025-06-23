@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="flex py-4 px-4 md:px-[60px] sm:px-6 bg-white min-h-[101px] tracking-wide relative z-50">
+    <header class="flex px-4 md:px-[60px] sm:px-6 bg-white min-h-[101px] tracking-wide relative z-50">
       <div class="flex flex-wrap items-center gap-5 w-full mx-auto">
         <nuxt-link to="">
           <img src="/public/toyota-logo.jpg" alt="toyota-logo" class="w-[144.76px] h-[47.82px]" />
