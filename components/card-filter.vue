@@ -47,9 +47,11 @@ defineProps<{
     type: 'steps' | 'slider'
     labels?: string[]
     currentStepIndex?: number | null
+    minValue?: number
+    maxValue?: number
 }>()
 
-const emit = defineEmits(['update:currentStepIndex']);
+const emit = defineEmits(['update:currentStepIndex', 'update:minValue', 'update:maxValue']);
 
 const selectStep = (index: number) => {
     emit('update:currentStepIndex', index);
@@ -120,6 +122,8 @@ const handleDragging = (event: MouseEvent) => {
 const stopDrag = () => {
     isDragging.value = false;
     activeThumb.value = null;
+    emit('update:minValue', minRange.value)
+    emit('update:maxValue', maxRange.value)
     window.removeEventListener('mousemove', handleDragging);
     window.removeEventListener('mouseup', stopDrag);
 };

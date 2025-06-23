@@ -31,7 +31,7 @@ onMounted(() => {
   productsStore.fetchProducts()
 })
 
-const cards = computed(() => productsStore.products)
+const cards = computed(() => productsStore.filteredProducts)
 
 const getCapacity = (product: Product) => {
   const cap = product.numericTypes?.find(n => n.name.toLowerCase().includes('capacity'))
