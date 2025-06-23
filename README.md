@@ -77,19 +77,23 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 
 
-## Project Structure & How It Works
+## Project Structure
 
 ### Components
-- **card-filter.vue**: Filter card for step-based or slider-based filtering. Emits changes to parent via v-model.
-- **product-cards.vue**: Displays a grid of product cards using data from the products store. Shows skeleton loader while loading.
+
+- **navbar.vue**: Responsive navigation bar with logo, links, and search. Handles mobile menu toggling.
+- **card-filter.vue**: Filter card for step-based (e.g., usage intensity, transport distance) or slider-based (e.g., load capacity) filtering. Emits changes to parent via v-model.
+- **display-filters.vue**: Shows active filter tags. Users can remove tags to reset filters, which updates the store.
+- **products-list.vue**: Displays a grid of product cards using data from the products store. Shows a skeleton loader (`product-cards-skeleton.vue`) while loading. Uses the `product-card.vue` component for each product.
+- **product-card.vue**: Displays a single product’s image, name, code, and capacity. Receives a `product` prop.
 - **product-cards-skeleton.vue**: Skeleton placeholder for product cards during loading.
-- **navbar.vue**: Responsive navigation bar with logo, links, and search input. Includes mobile menu toggle.
-- **display-filters.vue**: Shows active filter tags. Allows users to remove filters, updating the store.
 
 ### Pages
-- **index.vue**: Main page. Renders the title, filter cards, active filters, and filtered product cards. Uses refs and watchers to sync filter UI with the products store.
+
+- **index.vue**: Main page. Renders the title and divider, filter cards, active filters, and filtered product list. Uses refs and watchers to sync filter UI with the products store.
 
 ### Store
+
 - **stores/productsStore.ts**: Pinia store managing product/filter data and filter state.
   - **State:** Holds products, filters, selected filter values, and loading/error states.
   - **Actions:**
@@ -100,17 +104,18 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
     - `filteredProducts`: Returns products filtered by the selected filter values.
 
 ### Types
+
 - **types/products.ts**: TypeScript interfaces for product, API response, and filter response data structures.
 
 ---
 
 ## Application Flow
+
 1. On page load, the main page fetches products and filter options via the store.
 2. Users interact with filter cards. Changes are synced to the store.
-3. The store computes `filteredProducts` based on selected filters, and the product cards grid updates automatically.
+3. The store computes `filteredProducts` based on selected filters, and the product list updates automatically.
 4. Active filters are shown as tags, which can be removed to reset filters. Skeleton cards are shown while loading.
 
 All UI is styled with Tailwind CSS and is responsive.
 
 ---
-

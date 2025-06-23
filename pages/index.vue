@@ -26,7 +26,7 @@
 
     <!-- Product Cards -->
     <div class="mt-[20px] md:mt-[37.68px]">
-      <product-cards />
+      <products-list />
     </div>
   </div>
 </template>
