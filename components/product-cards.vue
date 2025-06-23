@@ -6,11 +6,11 @@
           :class="['grid', cards.length === 1 ? 'place-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4', 'gap-[30px]']">
           <div v-for="card in cards" :key="card.id"
             class="bg-white rounded-xl custom-shadow py-5 text-center w-[326px] min-h-[390px] gap-2.5">
-            <img :src="card.image" alt="product" class="w-[195.93px] h-[195.93px] object-contain mx-auto">
-            <h3 class="text-base font-500 text-[#CE190A] mt-5 uppercase">{{ card.title }}</h3>
-            <p class="text-[#282830] mt-2.5 font-500 text-sm">{{ card.subtitle }}</p>
+            <img :src="card.featured_image" alt="product" class="w-[195.93px] h-[195.93px] object-contain mx-auto">
+            <h3 class="text-base font-500 text-[#CE190A] mt-5 uppercase">{{ card.name }}</h3>
+            <p class="text-[#282830] mt-2.5 font-500 text-sm">{{ card.code }}</p>
             <p class="text-[#282830] mt-2.5 font-500 text-sm uppercase">capacity: <span class="text-[#CE190A]">{{
-              card.capacity
+              getCapacity(card)
                 }}</span></p>
 
             <button
@@ -23,12 +23,20 @@
 </template>
 
 <script lang="ts" setup>
-const cards = ref([
-  { id: 1, image: 'https://justfields.com/storage/projects/7M5rV059/image%207.png', title: 'reach trucks', subtitle: 'OSE250', capacity: '5511 LBS' },
-  { id: 2, image: 'https://justfields.com/storage/projects/7M5rV059/image%207.png', title: 'reach trucks', subtitle: 'OSE250', capacity: '5511 LBS' },
-  { id: 3, image: 'https://justfields.com/storage/projects/7M5rV059/image%207.png', title: 'reach trucks', subtitle: 'OSE250', capacity: '5511 LBS' },
-  { id: 4, image: 'https://justfields.com/storage/projects/7M5rV059/image%207.png', title: 'reach trucks', subtitle: 'OSE250', capacity: '5511 LBS' },
-])
+import type { Product } from "@/types/products";
+
+const productsStore = useProductsStore()
+
+onMounted(() => {
+  productsStore.fetchProducts()
+})
+
+const cards = computed(() => productsStore.products)
+
+const getCapacity = (product: Product) => {
+  const cap = product.numericTypes?.find(n => n.name.toLowerCase().includes('capacity'))
+  return cap ? `${Number(cap.value).toFixed(0)} Kg` : 'N/A'
+}
 </script>
 
 <style scoped>

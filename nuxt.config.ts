@@ -17,13 +17,18 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ["./stores/**", "./custom-folder/stores/**"],
   },
-  // css: ["~/assets/css/main.css"],
   components: [
     {
       path: "~/components",
       pathPrefix: false,
     },
   ],
+  runtimeConfig: {
+    public: {
+      PRODUCTS_JSON_URL: process.env.NUXT_PUBLIC_PRODUCTS_JSON_URL || "",
+      PRODUCTS_FILTERS_URL: process.env.NUXT_PUBLIC_PRODUCTS_FILTERS_URL || "",
+    },
+  },
   app: {
     head: {
       title: "Task",
