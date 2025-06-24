@@ -28,7 +28,7 @@ const capacity = computed(() => {
   const cap = props.product.numericTypes?.find(n =>
     n.name.toLowerCase().includes('capacity')
   )
-  return cap ? `${Number(cap.value).toFixed(0)} Kg` : 'N/A'
+  return cap ? `${Number(cap.value)}` : 'N/A'
 })
 </script>
 
